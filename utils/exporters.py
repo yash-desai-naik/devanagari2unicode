@@ -19,6 +19,7 @@ def save_as_docx(text, filename):
 def save_as_pdf(text, filename):
     """Save text as PDF file using WeasyPrint."""
     # Create HTML content with proper styling
+    prepared_text = text.replace('\n', '<br>')
     html_content = f"""
     <!DOCTYPE html>
     <html>
@@ -42,7 +43,7 @@ def save_as_pdf(text, filename):
             </style>
         </head>
         <body>
-            <div>{text.replace('\n', '<br>')}</div>
+            <div>{prepared_text}</div>
         </body>
     </html>
     """
@@ -62,6 +63,9 @@ def save_as_pdf(text, filename):
 
 def save_as_html(text, filename):
     """Save text as HTML file."""
+
+    prepared_text = text.replace('\n', '<br>')
+
     html_content = f"""
     <!DOCTYPE html>
     <html>
@@ -78,7 +82,7 @@ def save_as_html(text, filename):
         </head>
         <body>
             <div>
-                {text.replace('\n', '<br>')}
+                {prepared_text}
             </div>
         </body>
     </html>
